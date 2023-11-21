@@ -45,7 +45,7 @@ const App = () => {
 
   useEffect(() => {
     getJobList();
-  }, []);
+  }, [getJobList]);
 
   return (
     <>
