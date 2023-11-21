@@ -18,14 +18,6 @@ const App = () => {
 
   const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
-  const getJobList = async () => {
-    await delay(2000)
-    const res = await axios.get(
-      "https://6555b88984b36e3a431e30d7.mockapi.io/api/job"
-    );
-    setJobList(res.data);
-  };
-
   const handleEdit = (id) => {
     const jobToEdit = jobList.find((job) => job.id === id);
     setEditedJob(jobToEdit);
@@ -44,8 +36,15 @@ const App = () => {
   }
 
   useEffect(() => {
+    const getJobList = async () => {
+      await delay(2000)
+      const res = await axios.get(
+        "https://6555b88984b36e3a431e30d7.mockapi.io/api/job"
+      );
+      setJobList(res.data);
+    };
     getJobList();
-  }, [getJobList]);
+  }, []);
 
   return (
     <>
